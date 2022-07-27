@@ -13,10 +13,13 @@ import java.time.LocalDateTime;
 public class Book {
 
     @Id
+    @Min(value = 1)
+    @Max(value = 100)
     private int id;
 
     private String bookName;
 
+    @Size(min=2, message="author name must be of atleast 2  characters")
     private String authorName;
 
     private LocalDateTime localDateTime;
