@@ -1,7 +1,6 @@
 package com.example.spring.mongodb.controller;
 
 import com.example.spring.mongodb.model.Book;
-import com.example.spring.mongodb.repository.BookRepository;
 import com.example.spring.mongodb.service.BookService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,14 +23,15 @@ public class BookController {
         bookService.saveBookMethod(book);
     }
 
+
     //To get a book by id
     @GetMapping("/getBook/{id}")
     public Optional<Book> getBookById(@PathVariable int id){
-      Optional<Book> book = bookService.getBookById(id);
+            Optional<Book> book = bookService.getBookById(id);
 //        if(book.isPresent())
 //            return book;
 //        else return bookService.getBookByIdMet(13);
-        return bookService.getBookById(id);
+        return book;
     }
 
     // To get list of all books

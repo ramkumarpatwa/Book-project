@@ -1,5 +1,6 @@
 package com.example.spring.mongodb.service;
 
+import com.example.spring.mongodb.exceptions.BookNotFoundException;
 import com.example.spring.mongodb.model.Book;
 import com.example.spring.mongodb.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,10 @@ public class BookServiceImpl implements BookService{
 
     @Override
     public Optional<Book> getBookById(int id) {
-        return bookRepository.findById(id);
+        Optional<Book> book = bookRepository.findById(id);
+        if(book.isPresent())
+            return book;
+        else throw new BookNotFoundException("Book with given id doesn't exist");
     }
 
     @Override
