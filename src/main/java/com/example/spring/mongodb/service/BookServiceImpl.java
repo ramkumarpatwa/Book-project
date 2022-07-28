@@ -70,4 +70,15 @@ public class BookServiceImpl implements BookService{
         bookRepository.save(existingBookPresentInDbInObjectFormat);
         return existingBookPresentInDbInObjectFormat;
     }
+
+    @Override
+    public List<String> getAllAuthorName() {
+        List<String> authorNameList = new ArrayList<>();
+        List<Book> books = bookRepository.findAll();
+        for(Book authorName : books){
+            authorNameList.add(authorName.getAuthorName());
+        }
+
+        return authorNameList;
+    }
 }

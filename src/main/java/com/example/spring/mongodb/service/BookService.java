@@ -19,4 +19,6 @@ public interface BookService {
     Optional<Book> getBookById(int id);
 
     List<String> getAllBookName();
+
+    List<String> getAllAuthorName();
 }

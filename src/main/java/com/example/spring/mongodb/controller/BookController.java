@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -64,4 +65,14 @@ public class BookController {
     public Book updateBook(@RequestBody Book book, @PathVariable int id){
        return bookService.updateBookById(book, id);
     }
+
+    @GetMapping("/getAllAuthorName")
+    public List<String> authorName(){
+        return bookService.getAllAuthorName();
+
+    }
+
+
+
+
 }
