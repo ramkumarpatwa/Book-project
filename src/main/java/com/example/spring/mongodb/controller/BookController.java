@@ -34,6 +34,19 @@ public class BookController {
         return book;
     }
 
+    // return list of all book name
+    @GetMapping("/getAllBookName")
+    public List<String> getAllBookName(){
+        return bookService.getAllBookName();
+    }
+
+
+    // return list of all author name
+
+    // return book details by passing author name and book name as RequestParam
+
+    // return book details by passing author name and book name as PathVariable
+
     // To get list of all books
     @GetMapping("/getAllBooks")
     public List<Book> getAllBooks(){

@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,6 +35,16 @@ public class BookServiceImpl implements BookService{
         if(book.isPresent())
             return book;
         else throw new BookNotFoundException("Book with given id doesn't exist");
+    }
+
+    @Override
+    public List<String> getAllBookName(){
+        List<String> bookNameList = new ArrayList<>();
+        List<Book> allBooks = bookRepository.findAll();
+        for(Book book: allBooks){
+            bookNameList.add(book.getBookName());
+        }
+        return bookNameList;
     }
 
     @Override
