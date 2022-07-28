@@ -19,6 +19,11 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
+    /**
+     * Api to save book
+     * @param book passing book as requestbody
+     * @return Book which will be saved as responseBody
+     */
     @PostMapping("/saveBook")
     public Book saveBook(@Valid @RequestBody Book book){
         return bookService.saveBookMethod(book);
@@ -41,12 +46,18 @@ public class BookController {
         return bookService.getAllBookName();
     }
 
-
-    // return list of all author name
-
     // return book details by passing author name and book name as RequestParam
 
-    // return book details by passing author name and book name as PathVariable
+    /**
+     * Api to get book by authorName and bookName
+     * @param authorName authorName
+     * @param bookName bookName
+     * @return book with given authorName and bookName
+     */
+    @GetMapping("/getBook/{authorName}/{bookName}")
+    public Book getBook(@PathVariable  String authorName, @PathVariable String bookName){
+        return bookService.getBookByAuthorNameAndBookName(authorName, bookName);
+    }
 
     // To get list of all books
     @GetMapping("/getAllBooks")
@@ -66,6 +77,10 @@ public class BookController {
        return bookService.updateBookById(book, id);
     }
 
+    /**
+     * Api to get List of authorName from book details
+     * @return  list of authorName
+     */
     @GetMapping("/getAllAuthorName")
     public List<String> authorName(){
         return bookService.getAllAuthorName();

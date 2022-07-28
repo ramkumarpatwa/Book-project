@@ -4,4 +4,5 @@ import com.example.spring.mongodb.model.Book;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface BookRepository extends MongoRepository<Book, Integer>{
+    Book findByAuthorNameAndBookName(String authorName, String bookName);
 }
