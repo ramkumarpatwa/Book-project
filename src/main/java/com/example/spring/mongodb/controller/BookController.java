@@ -19,8 +19,8 @@ public class BookController {
     private BookService bookService;
 
     @PostMapping("/saveBook")
-    public void saveBook(@Valid @RequestBody Book book){
-        bookService.saveBookMethod(book);
+    public Book saveBook(@Valid @RequestBody Book book){
+        return bookService.saveBookMethod(book);
     }
 
 

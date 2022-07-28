@@ -4,6 +4,7 @@ import com.example.spring.mongodb.exceptions.BookNotFoundException;
 import com.example.spring.mongodb.model.Book;
 import com.example.spring.mongodb.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -19,12 +20,12 @@ public class BookServiceImpl implements BookService{
     //when id > 50 authorname = Sushma
     // set current time + 1
     @Override
-    public void saveBookMethod(Book book) {
+    public Book saveBookMethod(Book book) {
         book.setLocalDateTime(LocalDateTime.now().plusHours(1));
         if(book.getId()>50)
                 book.setAuthorName("Sushma");
         //
-         bookRepository.save(book);
+         return bookRepository.save(book);
     }
 
     @Override

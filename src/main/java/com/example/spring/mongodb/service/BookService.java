@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface BookService {
 
-    public void saveBookMethod(Book book);
+    public Book saveBookMethod(Book book);
 
     public List<Book> getAllBooks();
 
