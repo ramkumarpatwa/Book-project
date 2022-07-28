@@ -23,4 +23,6 @@ public interface BookService {
     List<String> getAllAuthorName();
 
     Book getBookByAuthorNameAndBookName(String authorName, String bookName);
+
+    Book getBookByAuthorNameAndBookNameWithRequestParam(String authorName, String bookName);
 }

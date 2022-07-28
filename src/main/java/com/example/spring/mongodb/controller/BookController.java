@@ -47,6 +47,10 @@ public class BookController {
     }
 
     // return book details by passing author name and book name as RequestParam
+    @GetMapping("/getBook")
+    public Book getBookByRequestParam(@RequestParam  String authorName, @RequestParam String bookName){
+        return bookService.getBookByAuthorNameAndBookNameWithRequestParam(authorName, bookName);
+    }
 
     /**
      * Api to get book by authorName and bookName
