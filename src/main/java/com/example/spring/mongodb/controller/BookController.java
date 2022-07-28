@@ -40,6 +40,12 @@ public class BookController {
         return book;
     }
 
+    // fetch book by authorName using RequestParam
+    @GetMapping("/getBookByAuthorName")
+    public List<Book> getBookByAuthorName(@RequestParam String authorName){
+        return bookService.getBookByAuthorName(authorName);
+    }
+
     // return list of all book name
     @GetMapping("/getAllBookName")
     public List<String> getAllBookName(){
