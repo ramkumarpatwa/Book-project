@@ -6,7 +6,9 @@ import com.example.spring.mongodb.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -45,7 +47,14 @@ public class StudentServiceImpl implements StudentService{
         Optional<Student> student = getStudent(student_id);
         List<Book> bookList = student.get().getBookList();
         Optional<Book> bookById = bookService.getBookById(book_id);
-        bookList.add(bookById.get());
+        if(Objects.isNull(bookList)){
+            List<Book> newBookList = new ArrayList<>();
+            newBookList.add(bookById.get());
+            student.get().setBookList(newBookList);
+        }
+        else {
+            bookList.add(bookById.get());
+        }
         return studentRepository.save(student.get());
     }
 
