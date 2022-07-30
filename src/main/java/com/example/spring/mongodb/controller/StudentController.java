@@ -31,4 +31,9 @@ public class StudentController {
         return studentService.getStudent(id);
    }
 
+    @GetMapping("getBookList/{student_id}")
+    public List<Book> bookListByStudentId(@PathVariable int student_id){
+        return studentService.getBookListByStudentId(student_id);
+    }
+
 }

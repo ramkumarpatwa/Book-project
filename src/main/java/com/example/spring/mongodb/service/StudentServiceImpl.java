@@ -29,4 +29,11 @@ public class StudentServiceImpl implements StudentService{
     public Optional<Student> getStudent(int id) {
         return studentRepository.findById(id);
     }
+
+    @Override
+    public List<Book> getBookListByStudentId(int student_id) {
+        Optional<Student> optionalStudent = studentRepository.findById(student_id);
+        List<Book> bookList = optionalStudent.get().getBookList();
+        return  bookList;
+    }
 }
