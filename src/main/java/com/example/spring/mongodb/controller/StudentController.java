@@ -40,4 +40,9 @@ public class StudentController {
     public Student addExistingBookToStudent(@PathVariable int student_id, @PathVariable int book_id){
         return studentService.addExistingBookToStudent(student_id, book_id);
     }
+
+    @DeleteMapping("delete/{id}")
+    public void deleteById(@PathVariable int id){
+        studentService.deleteById(id);
+    }
 }

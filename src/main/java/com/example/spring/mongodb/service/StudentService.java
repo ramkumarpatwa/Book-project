@@ -16,4 +16,6 @@ public interface StudentService {
     List<Book> getBookListByStudentId(int student_id);
 
     Student addExistingBookToStudent(int student_id, int book_id);
+
+    void deleteById(int id);
 }

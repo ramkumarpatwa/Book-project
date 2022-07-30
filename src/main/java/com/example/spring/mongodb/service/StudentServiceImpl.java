@@ -48,4 +48,9 @@ public class StudentServiceImpl implements StudentService{
         bookList.add(bookById.get());
         return studentRepository.save(student.get());
     }
+
+    @Override
+    public void deleteById(int id) {
+        studentRepository.deleteById(id);
+    }
 }
