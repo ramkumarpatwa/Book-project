@@ -18,4 +18,6 @@ public interface StudentService {
     Student addExistingBookToStudent(int student_id, int book_id);
 
     void deleteById(int id);
+
+    Student deleteExistingBookToStudent(int student_id, int book_id);
 }

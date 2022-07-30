@@ -62,4 +62,13 @@ public class StudentServiceImpl implements StudentService{
     public void deleteById(int id) {
         studentRepository.deleteById(id);
     }
+
+    @Override
+    public Student deleteExistingBookToStudent(int student_id, int book_id) {
+        Optional<Student> student = getStudent(student_id);
+        List<Book> bookList = student.get().getBookList();
+        Book book = bookService.getBookById(book_id).get();
+        bookList.remove(book);
+        return studentRepository.save(student.get());
+    }
 }
