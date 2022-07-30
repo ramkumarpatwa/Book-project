@@ -36,4 +36,8 @@ public class StudentController {
         return studentService.getBookListByStudentId(student_id);
     }
 
+    @PutMapping("addBook/{student_id}/{book_id}")
+    public Student addExistingBookToStudent(@PathVariable int student_id, @PathVariable int book_id){
+        return studentService.addExistingBookToStudent(student_id, book_id);
+    }
 }

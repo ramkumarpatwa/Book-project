@@ -15,6 +15,9 @@ public class StudentServiceImpl implements StudentService{
     @Autowired
     private StudentRepository studentRepository;
 
+    @Autowired
+    private BookService bookService;
+
     @Override
     public List<Student> getStudentList() {
         return studentRepository.findAll();
@@ -35,5 +38,14 @@ public class StudentServiceImpl implements StudentService{
         Optional<Student> optionalStudent = studentRepository.findById(student_id);
         List<Book> bookList = optionalStudent.get().getBookList();
         return  bookList;
+    }
+
+    @Override
+    public Student addExistingBookToStudent(int student_id, int book_id) {
+        Optional<Student> student = getStudent(student_id);
+        List<Book> bookList = student.get().getBookList();
+        Optional<Book> bookById = bookService.getBookById(book_id);
+        bookList.add(bookById.get());
+        return studentRepository.save(student.get());
     }
 }

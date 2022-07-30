@@ -14,4 +14,6 @@ public interface StudentService {
     Optional<Student> getStudent(int id);
 
     List<Book> getBookListByStudentId(int student_id);
+
+    Student addExistingBookToStudent(int student_id, int book_id);
 }
