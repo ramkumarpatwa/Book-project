@@ -23,4 +23,6 @@ public class Book {
     private String authorName;
 
     private LocalDateTime localDateTime;
+
+    private int count;
 }

@@ -55,6 +55,9 @@ public class StudentServiceImpl implements StudentService{
         else {
             bookList.add(bookById.get());
         }
+        int newCountOfBook = bookById.get().getCount() - 1;
+        bookById.get().setCount(newCountOfBook);
+        bookService.saveBookMethod(bookById.get());
         return studentRepository.save(student.get());
     }
 
