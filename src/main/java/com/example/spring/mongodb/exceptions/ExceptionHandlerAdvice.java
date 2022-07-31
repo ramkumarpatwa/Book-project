@@ -15,4 +15,10 @@ public class ExceptionHandlerAdvice {
         CustomErrorResponse error = new CustomErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), ex.getMessage());
         return new ResponseEntity<CustomErrorResponse>(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
+    @ExceptionHandler(BookAlreadyPresentException.class)
+    public ResponseEntity<CustomErrorResponse> bookAlreadyPresent(BookAlreadyPresentException ex){
+        CustomErrorResponse error = new CustomErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), ex.getMessage());
+        return new ResponseEntity<CustomErrorResponse>(error, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 }

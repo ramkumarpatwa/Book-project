@@ -1,5 +1,6 @@
 package com.example.spring.mongodb.service;
 
+import com.example.spring.mongodb.exceptions.BookAlreadyPresentException;
 import com.example.spring.mongodb.model.Book;
 import com.example.spring.mongodb.model.Student;
 import com.example.spring.mongodb.repository.StudentRepository;
@@ -47,12 +48,14 @@ public class StudentServiceImpl implements StudentService{
         Optional<Student> student = getStudent(student_id);
         List<Book> bookList = student.get().getBookList();
         Optional<Book> bookById = bookService.getBookById(book_id);
-        if(Objects.isNull(bookList)){
+        if (Objects.isNull(bookList)) {
             List<Book> newBookList = new ArrayList<>();
             newBookList.add(bookById.get());
             student.get().setBookList(newBookList);
-        }
-        else {
+        } else {
+            if (bookList.contains(bookById.get())) {
+                throw new BookAlreadyPresentException("Book already present");
+            }
             bookList.add(bookById.get());
         }
         int newCountOfBook = bookById.get().getCount() - 1;
